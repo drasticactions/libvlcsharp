@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows10.0.19041</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>10.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <UseWinUI>True</UseWinUI>
+    <EnableDefaultPageItems>false</EnableDefaultPageItems>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="InitializedEventArgs.cs" />
+    <Compile Remove="VideoView.cs" />
+    <Compile Remove="VideoViewBase.cs" />
+    <Compile Remove="VideoViewOfTInitializedEventArgs.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="WinUI\InitializedEventArgs.cs" />
+    <None Include="WinUI\VideoView.cs" />
+    <None Include="WinUI\VideoViewBase.cs" />
+    <None Include="WinUI\VideoViewOfTInitializedEventArgs.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TerraFX.Interop.Windows" Version="10.0.20348-rc2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LibVLCSharp\LibVLCSharp.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.0.30" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>

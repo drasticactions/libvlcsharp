@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="LibVLCSharp.WinUI.Sample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LibVLCSharp.WinUI.Sample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:interactions="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:lvs="using:LibVLCSharp.Platforms.WinUI"
+    mc:Ignorable="d"
+    Background="Transparent">
+    <Page.DataContext>
+        <local:MainViewModel />
+    </Page.DataContext>
+    <Grid>
+        <lvs:VideoView x:Name="SampleView" MediaPlayer="{Binding MediaPlayer}">
+            <interactivity:Interaction.Behaviors>
+                <interactions:EventTriggerBehavior EventName="Initialized">
+                    <interactions:InvokeCommandAction Command="{Binding InitializedCommand}"/>
+                </interactions:EventTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
+        </lvs:VideoView>
+    </Grid>
+</Page>
